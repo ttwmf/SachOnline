@@ -1,0 +1,25 @@
+﻿<br>
+@{
+    ViewBag.Title = "ChiTietSach";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<div class="thumbnail">
+    <h2>@Model.TenSach</h2>
+    <img src="~/Images/@Model.AnhBia" class="img-thumbnail" alt="@Model.TenSach">
+    <div class="caption">
+        <p class="giaban">Gia bán: @Html.FormatValue(@Model.GiaBan, "{0:#,###}") VNĐ</p>
+        <p class="text-center">
+            <a href="@Url.Action("ThemGioHang", "GioHang", new { ms = Model.MaSach, url = Request.Url.ToString() })" class="btn btn-warning" role="button" style="align-items:center;">
+                <span style="justify-content: center;" class="glyphicon glyphicon-credit-card" aria-hidden="true">
+                </span> Add to Cart
+            </a>
+        </p>
+    </div>
+    <p class="ngaycapnhat">Ngày cập nhât: @Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}")</p>
+    <p>
+        @Html.Raw(@Model.MoTa.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"));
+    </p>
+</div>
+
+
+<p></p>
