@@ -1,0 +1,91 @@
+﻿@model SachOnline.Models.SACH
+
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style type="text/css">
+    h3, h4{
+        color:red;
+        font-weight:bold;
+    }
+</style>
+<h2>XÁC NHẬN THÔNG TIN CẦN XÓA</h2>
+
+<h3>Bạn quyết định xóa quyển sách này?</h3>
+<div>
+    <h4>@Html.Raw(ViewBag.ThongBao)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên sách:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSach)
+        </dd>
+
+        <dt>
+            Chủ đề:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CHUDE.TenChuDe)
+        </dd>
+
+        <dt>
+            Nhà xuất bản:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NHAXUATBAN.TenNXB)
+        </dd>
+
+
+        <dt>
+            Giá bán:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GiaBan)
+        </dd>
+
+        <dt>
+            Mô tả:
+        </dt>
+        <dd>
+            @Html.Raw(@Model.MoTa.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"));
+        </dd>
+
+        <dt>
+            Ảnh bìa:
+        </dt>
+        <dd>
+            <img src="~/Images/@Model.AnhBia" style="width:300px; height:375px; margin-bottom:20px;" />
+        </dd>
+
+        <dt>
+            Ngày cập nhât:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayCapNhat)
+        </dd>
+
+        <dt>
+            Số lượng bán:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongBan)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color " style="text-align:center">
+            <input type="submit" value="Xóa" class="btn btn-danger" style="width: 150px" /> 
+            <a href="@Url.Action("Index", "Sach")" class="btn btn-warning" role="button">Quay lại danh sách</a>
+        </div>
+    }
+</div>

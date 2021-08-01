@@ -92,5 +92,7 @@ namespace SachOnline.Models
                 .WithRequired(e => e.TACGIA)
                 .WillCascadeOnDelete(false);
         }
+
+        public System.Data.Entity.DbSet<SachOnline.Models.ReportInfo> ReportInfoes { get; set; }
     }
 }

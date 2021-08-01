@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SachOnline.Models.SACH>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@using (Html.BeginForm("Search", "Search", FormMethod.Get))
+{
+    
+    if (Model != null)
+    {
+        <h2 style="text-align:center;">KẾT QUẢ TÌM</h2>
+        <table boder="1">
+            <tr style="background-color:#9ca1a4; font-size:15px; font-weight: bold; text-align:center;">
+                <td>Mã sách</td>
+                <td>Tên sách</td>
+                <td>Ảnh bìa</td>
+                <td>Số lượng</td>
+                <td>Ngày cập nhật</td>
+                <td>Mã CD</td>
+                <td>Mã NXB</td>
+            </tr>
+            @foreach (var s in Model)
+            {
+                <tr style="text-align:center; font-weight:bold;">
+                    <td>@s.MaSach</td>
+                    <td>@s.TenSach</td>
+                    <td>@s.AnhBia</td>
+                    <td>@s.SoLuongBan</td>
+                    <td>@s.NgayCapNhat</td>
+                    <td>@s.MaCD</td>
+                    <td>@s.MaNXB</td>
+                </tr>
+            }
+        </table>
+     }
+}
+
+
+

@@ -79,7 +79,7 @@ namespace SachOnline.Controllers
         {
             if(Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
             {
-                return RedirectToAction("DangNhap", "User");
+                return Redirect("~/User/DangNhap?id=2");
             }
             if(Session["GioHang"] == null)
             {

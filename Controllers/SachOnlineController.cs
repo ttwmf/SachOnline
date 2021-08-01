@@ -21,6 +21,11 @@ namespace SachOnline.Controllers
             return View(listSachMoi.ToPagedList(iPageNum, iSize));
         }
 
+        public ActionResult LogoutLogin()
+        {
+            return PartialView();
+        }
+
         public ActionResult SachTheoChuDe(int iMaCD, int? page)
         {
             ViewBag.MaCD = iMaCD;

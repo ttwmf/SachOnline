@@ -1,0 +1,40 @@
+﻿@model IEnumerable<IGrouping<int?, SachOnline.Models.SACH> >
+
+@{
+    ViewBag.Title = "Group";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>Group</h2>
+<h2>DANH SÁCH THEO CHỦ ĐỀ</h2>
+@foreach(var g in Model)
+{
+<div>
+    <h4 style="font-weight:bold; color:red;">
+        MÃ CHỦ ĐỀ @g.Key
+    </h4>
+    <table boder="1">
+        <tr style="background-color:#9ca1a4; font-size:15px; font-weight: bold; text-align:center;">
+            <td>Mã sách</td>
+            <td>Tên sách</td>
+            <td>Ảnh bìa</td>
+            <td>Số lượng</td>
+            <td>Ngày cập nhật</td>
+            <td>Mã CD</td>
+            <td>Mã NXB</td>
+        </tr>
+        @foreach (var s in g)
+        {
+            <tr style="text-align:center; font-weight:bold;">
+                <td>@s.MaSach</td>
+                <td>@s.TenSach</td>
+                <td>@s.AnhBia</td>
+                <td>@s.SoLuongBan</td>
+                <td>@s.NgayCapNhat</td>
+                <td>@s.MaCD</td>
+                <td>@s.MaNXB</td>
+            </tr>
+        }
+    </table>
+</div>
+}

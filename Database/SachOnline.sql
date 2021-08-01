@@ -1,10 +1,4 @@
-﻿use master
-drop Database SachOnline
---Tao CSDL
-create database SachOnline
-GO
-use SachOnline
-GO
+﻿
 CREATE TABLE CHUDE
 (
 	MaCD INT IDENTITY(1,1),
@@ -27,7 +21,7 @@ CREATE TABLE SACH
 	MaSach INT IDENTITY(1,1),
 	TenSach NVARCHAR(100) NOT NULL,
 	GiaBan MONEY CHECK (GiaBan>=0),
-	MoTa NTEXT,
+	MoTa NVARCHAR(4000),
 	AnhBia VARCHAR(50),
 	NgayCapNhat SMALLDATETIME,
 	SoLuongBan INT CHECK(SoLuongBan>0),
@@ -193,6 +187,12 @@ Chương 8: Nhận biết và quản lý tám kiểu cộng tác viên.
 Chương 9: Cải thiện người quản lý.
 Xin trân trọng giới thiệu. 
 ', N'KT0002.jpg', 9, 8, '01/10/2021', 5)
+INSERT [dbo].[SACH] ([Masach], [Tensach], [GiaBan], [Mota], [AnhBia], [MaCD], [MaNXB], [Ngaycapnhat], [Soluongban]) VALUES (9, N'Tây Du Ký', 80000, N'Cuốn sách này gồm những nội dung chính sau:
+Phần 1: Đường Tăng bị dụ đi thỉnh kinh
+Phần 2: Đường Tăng không mê gái
+Xin trân trọng giới thiệu. 
+
+', N'KT0001.jpg', 5, 6, '04/12/2018', 89)
 INSERT [dbo].[SACH] ([Masach], [Tensach], [GiaBan], [Mota], [AnhBia], [MaCD], [MaNXB], [Ngaycapnhat], [Soluongban]) VALUES (10, N'Cán Bộ Quản Lý Trong Sản Xuất Công Nghiệp', 25000, N'Cuốn sách này gồm những nội dung chính sau:
 Phần 1: Quản lý sản xuất công nghiệp trong kinh tế thị trường
 - Kinh doanh sản xuất công nghiệp trong kinh tế thị trường

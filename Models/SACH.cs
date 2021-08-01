@@ -26,7 +26,7 @@ namespace SachOnline.Models
         [Column(TypeName = "money")]
         public decimal? GiaBan { get; set; }
 
-        [Column(TypeName = "ntext")]
+       
         public string MoTa { get; set; }
 
         [StringLength(50)]

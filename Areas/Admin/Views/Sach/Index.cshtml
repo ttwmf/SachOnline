@@ -1,0 +1,107 @@
+﻿@model PagedList.PagedList<SachOnline.Models.SACH>
+@using SachOnline.Models;
+@using PagedList.Mvc;
+
+@*Tao helper rieng*@
+@helper TrunCate(string s, int length)
+{
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text>....</text>
+    }
+}
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h2 style="text-align:center">QUẢN LÝ THÔNG TIN SÁCH</h2>
+
+<table class="table-hover">
+    <tr style="background-color:darkgray">
+        <th style="text-align:center; width:4%">
+            Mã sách
+        </th>
+        <th style="text-align:center; width:14%">
+            Tên sách
+        </th>
+        <th style="text-align:center; width:19%">
+            Mô tả
+        </th>
+        <th style="text-align:center; width:7%">
+            Ảnh bìa
+        </th>
+        <th style="text-align:center; width:10%">
+            Ngày cập nhật
+        </th>
+        <th style="text-align:center; width:5%">
+            Số lượng
+        </th>
+        <th style="text-align:center; width:7%">
+            Giá bán
+        </th>
+        <th style="text-align:center; width:8%">
+            Chủ đề
+        </th>
+        <th style="text-align:center; width:10%">
+            Nhà xuất bản
+        </th>
+        <th style="text-align:center"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td style="text-align:center; font-weight:bold">
+            @item.MaSach
+        </td>
+        <td style="text-align:left">
+            @TrunCate(item.TenSach, 50)
+        </td>
+        <td style="text-align:left">
+            @Html.Raw(TrunCate(item.MoTa, 80).ToString())
+        </td>
+        <td style="text-align:center">
+            <img src="~/Images/@item.AnhBia" style="width:50px" />
+        </td>
+        <td style="text-align:center">
+            @Html.FormatValue(item.NgayCapNhat, "{0:dd/MM/yyyy}")
+        </td>
+        <td style="text-align:center">
+            @item.SoLuongBan
+        </td>
+        <td style="text-align:center">
+            @Html.FormatValue(item.GiaBan, "{0:#,##0}")
+        </td>
+        <td style="text-align:center">
+            @item.CHUDE.TenChuDe
+        </td>
+        <td style="text-align:center">
+            @item.NHAXUATBAN.TenNXB
+        </td>
+        <td>
+            <a href="@Url.Action("Sua", new {id = item.MaSach})" class="btn btn-warning" role="button">Sửa</a>
+            <a href="@Url.Action("ChiTiet", new {id = item.MaSach})" class="btn btn-primary" role="button">Chi tiết</a>
+            <a href="@Url.Action("Xoa", new {id = item.MaSach})" class="btn btn-danger" role="button">Xóa</a>
+        </td>
+    </tr>
+    }
+
+</table>
+    Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    <a href="@Url.Action("Create")" class="btn btn-info" role="button" style="font-weight:bold; color:red;">Thêm mới</a>
+</div>
+    <style>
+        .MenuTrang {
+            display: inline;
+            display: inline;
+            text-align: center;
+        }
+    </style>

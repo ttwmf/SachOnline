@@ -1,0 +1,21 @@
+﻿body {
+    
+}
+.ngaycapnhat{
+    font-size: 14px;
+    text-align:center;
+    font-weight: bold;
+}
+.giaban{
+    font-size: 14px;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+.addtocard{
+    align-content:center;
+}
+.MenuTrang{
+    display: inline;
+    text-align: center;
+}
